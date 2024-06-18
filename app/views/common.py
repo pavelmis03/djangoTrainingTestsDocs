@@ -21,3 +21,10 @@ def check_page(request: WSGIRequest):
     statistic = TextStatistic(text)
     context["statistic"] = statistic
     return render(request, pagename, context)
+
+
+@login_required
+def profile_page(request: WSGIRequest):
+    pagename = "pages/profile.html"
+    context = {}
+    return render(request, pagename, context)
