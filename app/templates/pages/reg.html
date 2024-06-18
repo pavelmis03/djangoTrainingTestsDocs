@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<h1 class="text-center">Регистрация</h1>
+{% if errors %}
+<div class="col-3 mx-auto bg-danger">
+    {{ errors }}
+</div>
+{% endif %}
+<form class="form col-6 mx-auto" method="POST" action="">
+    {% csrf_token %}
+    {% for item in form %}
+        <label class="text-muted">{{ item.label }}:</label><br>
+        {{ item }}
+    {% endfor %}
+    <button type="submit" class="btn btn-primary mt-2">Отправить</button>
+</form>
+{% endblock %}
