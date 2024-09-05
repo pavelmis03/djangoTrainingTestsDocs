@@ -1,0 +1,9 @@
+Statistic
+=========
+
+.. automodule:: texttool
+    :members:
+
+
+
+

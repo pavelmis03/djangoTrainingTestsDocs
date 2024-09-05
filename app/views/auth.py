@@ -1,3 +1,6 @@
+"""
+Модуль view, отвечающий за работу с шаблонами регистрации и авторизации
+"""
 from django.shortcuts import render, redirect
 from django.core.handlers.wsgi import WSGIRequest
 from django.contrib.auth.models import User
@@ -7,6 +10,11 @@ from django.contrib.auth import login, logout, authenticate
 from app.forms import RegistrationForm, LoginForm
 
 def registration_page(request: WSGIRequest):
+    """
+    Обработчик страницы регистрации
+    :param request: объект запроса
+    :return: отрендеренную страницу
+    """
     pagename = "pages/reg.html"
     context = {}
     if request.method == "POST":
@@ -31,6 +39,11 @@ def registration_page(request: WSGIRequest):
 
 
 def login_page(request: WSGIRequest):
+    """
+        Обработчик страницы авторизации
+        :param request: объект запроса
+        :return: отрендеренную страницу
+    """
     pagename = "pages/login.html"
     context = {}
     if request.method == "POST":
@@ -52,5 +65,10 @@ def login_page(request: WSGIRequest):
 
 # @login_required
 def logout_page(request: WSGIRequest):
+    """
+        Обработчик запроса на деавторизацию
+        :param request: объект запроса
+        :return: отрендеренную главную страницу
+    """
     logout(request)
     return redirect("/")
