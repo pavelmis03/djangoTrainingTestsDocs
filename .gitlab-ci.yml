@@ -6,6 +6,7 @@ cache:
 
 stages:
   - test
+  - docs
   - deploy
 
 
@@ -23,6 +24,20 @@ test:
   artifacts:
     paths:
       - public/coverage
+
+docs:
+  stage: docs
+  before_script:
+  - pip install sphinx
+  script:
+  - cd docs
+  - export PYTHONPATH
+  - make html
+  - cd ..
+  - mv docs/build/html public/docs
+  artifacts:
+    paths:
+      - public/docs
 
 pages:
   stage: deploy
