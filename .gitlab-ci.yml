@@ -16,14 +16,8 @@ test:
   - pip install --upgrade pip
   - pip install coverage==4.5.3
   script:
-  - coverage run -m unittest main.py
-  - coverage report --omit=main.py
-  - coverage html --omit=main.py
-  - mkdir public
-  - mv htmlcov public/coverage
-  artifacts:
-    paths:
-      - public/coverage
+  - coverage run --source='.' manage.py test
+  - coverage report
 
 docs:
   stage: docs

@@ -4,7 +4,7 @@
 from django.shortcuts import render
 from django.core.handlers.wsgi import WSGIRequest
 from django.contrib.auth.decorators import login_required
-from app.views import TextStatistic
+from app.statistic.texttool import TextStatistic
 
 def index_page(request: WSGIRequest):
     """
