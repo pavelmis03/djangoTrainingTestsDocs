@@ -5,19 +5,9 @@ cache:
   - ~/.cache/pip/
 
 stages:
-  - test
   - docs
+  - test
   - deploy
-
-
-test:
-  stage: test
-  before_script:
-  - pip install --upgrade pip
-  - pip install coverage==4.5.3
-  script:
-  - coverage run --source='.' manage.py test
-  - coverage report
 
 docs:
   stage: docs
@@ -33,6 +23,16 @@ docs:
     paths:
       - public/docs
 
+test:
+  stage: test
+  before_script:
+  - pip install --upgrade pip
+  - pip install coverage==4.5.3
+  - pip install django
+  script:
+  - coverage run --source='.' manage.py test
+  - coverage report
+
 pages:
   stage: deploy
   script:
@@ -40,5 +40,3 @@ pages:
   artifacts:
     paths:
     - public
-  only:
-  - main
